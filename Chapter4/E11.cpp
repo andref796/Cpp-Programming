@@ -8,10 +8,7 @@ using namespace std;
 
 int main (){
 
-    /* Numeros primos entre 1 y 100 */
-
-
-
+    /* Prime number between 1 and 100 */
     vector <int> numbers;
     vector <int> primes;
 
