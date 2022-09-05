@@ -24,7 +24,7 @@ vector<int> getRandVector(){
 vector<int> getUserNumber(){
     vector <int> UserNumber;
     int num;
-    cout << "Enter 4 digits separated by a space" << endl;
+    cout << endl << endl << "Enter 4 digits separated by a space" << endl;
     for(;UserNumber.size() != 4;)
     {
         cin >> num;
@@ -51,13 +51,52 @@ vector<int> getUserNumber(){
     return UserNumber;
 }
 
-bool compareVectors(vector<int> &UserNumber, vector<int> &RandVector){
-    return true;
+void GetCowsBulls(const vector<int> &UserNumber, const vector<int> &RandVector, int &bulls, int &cows)
+{
+	if(UserNumber.size() != RandVector.size())
+		throw std::invalid_argument("The size of the Vectors must be the same");
+
+	bulls = 0;
+	cows = 0;
+	for(int i = 0; i < UserNumber.size(); i++)
+	{
+		auto result = std::find(RandVector.begin(), RandVector.end(), UserNumber[i]);
+		if(result != RandVector.end())
+		{
+			int index = result - RandVector.begin();
+			if(i == index) bulls += 1;
+			else cows += 1;
+		}
+		else 
+		{
+		}
+	}
 }
 
 int main (){
-    getRandVector();
-    getUserNumber();
-    
+	int bulls = 0;
+    int cows = 0;
+    vector <int> RandVector;
+    vector <int> UserNumber;
+    try{
+        RandVector = getRandVector();
+        while(true){
+            UserNumber = getUserNumber();
+            GetCowsBulls(UserNumber, RandVector, bulls, cows); 
+            cout << "Bulls " << bulls << ", Cows " << cows << endl;
+            if(bulls == 4) {
+                cout << "Great you catch the number" << endl;
+                RandVector = getRandVector();
+            }
+            else continue;
+        }
+	}
+	catch (exception& e)
+    {
+        cerr << e.what() << endl;
+        return -1;
+    }
+	cout << "Bulls: " << bulls << endl;
+	cout << "Cows: " << cows << endl;
     return 0;
 }
