@@ -2,6 +2,7 @@
 // Created by hyde on 11/09/22.
 //
 #include <string>
+#include <ostream>
 #ifndef TEST_BOOK_H
 #define TEST_BOOK_H
 
@@ -23,6 +24,7 @@ namespace Books_lib {
         string CopyRightDate() const {return copyRightDate;};
         bool is_checkout() const {return checkout;};
         class Invalid { };
+        void print();
 
     private:
         string title;
@@ -32,7 +34,9 @@ namespace Books_lib {
         bool checkout {false};
 
     };
-
+    bool operator==(const Book& a, const Book& b);
+    bool operator!=(const Book& a, const Book& b);
+    std::ostream &operator<<(std::ostream& os, const Book& a);
     bool is_ISBN(const string& _isbn);
     bool is_CopyRightDate(const string& _copyRightDate);
 

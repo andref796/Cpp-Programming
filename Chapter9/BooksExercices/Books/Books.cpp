@@ -3,10 +3,8 @@
 #include <algorithm>
 #include "Books.h"
 
-using namespace Books_lib;
 
-bool is_ISBN(const string& _isbn);
-bool is_CopyRightDate(const string& _copyRightDate);
+namespace Books_lib{
 
 Book::Book(string _title,
            string _author,
@@ -17,9 +15,12 @@ Book::Book(string _title,
           isbn{_isbn},
           copyRightDate{_copyRightDate}
 {
-    if(!::is_ISBN(isbn) || !::is_CopyRightDate(copyRightDate)) throw Invalid{};
+    if(!is_ISBN(isbn) || !is_CopyRightDate(copyRightDate)) throw Invalid{};
 }
 
+void Book::print() {
+    std::cout << this;
+}
 const Book& default_book(){
     static Book db{"A", "A","1-1-A-A", "A"};
     return db;
@@ -58,7 +59,6 @@ bool is_ISBN(const string& _isbn){
 }
 
 
-
 bool is_CopyRightDate(const string& _copyRightDate){
     bool result {true};
     string copyRightDate {_copyRightDate};
@@ -84,6 +84,17 @@ bool is_CopyRightDate(const string& _copyRightDate){
     return result;
 }
 
+std::ostream& operator<<(std::ostream &os, const Book& a){
+    int i = 0;
+    return os << "Title: " << a.Title() << std::endl
+              << "Author: " << a.Author() << std::endl
+              << "ISBN: " << a.ISBN() << std::endl;
+}
+
+bool operator==(const Book& a, const Book& b) {return (a.ISBN() == b.ISBN());}
+bool operator!=(const Book& a, const Book& b) {return (a.ISBN() != b.ISBN());}
+
+}
 
 
 
