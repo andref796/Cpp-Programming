@@ -9,7 +9,14 @@
 namespace Books_lib {
 
     using std::string;
-    bool test1(int a);
+
+    enum class Genre{
+        fiction = 0,
+        nonfiction,
+        periodical,
+        biography,
+        children
+    };
 
     class Book{
     public:
@@ -17,12 +24,14 @@ namespace Books_lib {
         Book(string _title,
              string _author,
              string _isbn,
-             string _copyRightDate);
+             string _copyRightDate,
+             Genre genre);
         string Title() const {return title;};
         string Author() const {return author;};
         string ISBN() const {return isbn;};
         string CopyRightDate() const {return copyRightDate;};
         bool is_checkout() const {return checkout;};
+        Genre Which_Genre() const {return genre;};
         class Invalid { };
         void print();
 
@@ -32,6 +41,7 @@ namespace Books_lib {
         string isbn;
         string copyRightDate;
         bool checkout {false};
+        Genre genre;
 
     };
     bool operator==(const Book& a, const Book& b);

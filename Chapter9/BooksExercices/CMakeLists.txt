@@ -3,7 +3,7 @@ project(Test)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(Test main.cpp Books/Books.cpp Books/Books.h)
+add_executable(Test main.cpp Books/Books.cpp Books/Books.h Patron/Patron.cpp Patron/Patron.h Library/Library.cpp Library/Library.h)
 
 
 #[[

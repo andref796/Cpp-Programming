@@ -9,11 +9,13 @@ namespace Books_lib{
 Book::Book(string _title,
            string _author,
            string _isbn,
-           string _copyRightDate)
+           string _copyRightDate,
+           Genre _genre)
         : title{_title},
           author{_author},
           isbn{_isbn},
-          copyRightDate{_copyRightDate}
+          copyRightDate{_copyRightDate},
+          genre{_genre}
 {
     if(!is_ISBN(isbn) || !is_CopyRightDate(copyRightDate)) throw Invalid{};
 }
@@ -22,10 +24,9 @@ void Book::print() {
     std::cout << this;
 }
 const Book& default_book(){
-    static Book db{"A", "A","1-1-A-A", "A"};
+    static Book db{"A", "A","1-1-A-A", "A",Genre::fiction};
     return db;
 }
-
 
 bool is_ISBN(const string& _isbn){
     bool result {true};
