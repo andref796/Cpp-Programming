@@ -31,6 +31,7 @@ namespace Books_lib {
         string ISBN() const {return isbn;};
         string CopyRightDate() const {return copyRightDate;};
         bool is_checkout() const {return checkout;};
+        void Checkout(){ checkout = true;}
         Genre Which_Genre() const {return genre;};
         class Invalid { };
         void print();

@@ -25,6 +25,9 @@ namespace Patron_lib {
         unsigned int libraryCardNumber {0};
         unsigned int fees{0};
     };
+
+    bool operator==(const Patron& a, const Patron& b);
+    std::ostream &operator<<(std::ostream& os, const Patron& a);
     bool HasFees(const Patron& p);
 } // Patron_lib
 

@@ -18,8 +18,11 @@ namespace Library_lib {
         bool AddBook(const Books_lib::Book& book);
         bool AddPatron(const Patron_lib::Patron& patron);
         bool CheckOut(const Books_lib::Book& book, const Patron_lib::Patron& patron);
+        void PatronOwes();
 
     private:
+        bool FoundBook(const Books_lib::Book& book);
+        bool FoundPatron(const Patron_lib::Patron& patron);
         vector<Books_lib::Book> Books;
         vector<Patron_lib::Patron> Patrons;
         vector<Transaction> Transactions;
