@@ -14,10 +14,12 @@ namespace Rational_lib {
         Rational(int _numerator, int _denominator);
         int Numerator() const {return numerator;};
         int Denominator() const {return denominator;};
-//        int Numerator(int _numerator);
-//        int Denominator(int _denominator);
+        void Numerator(int _numerator) {this->numerator = _numerator;};
+        void Denominator(int _denominator)  {this->denominator = _denominator;};
+        void Simplify();
         class Invalid { };
     private:
+
         int numerator{1};
         int denominator{1};
     };
@@ -28,7 +30,8 @@ namespace Rational_lib {
     Rational operator/(const Rational& r, const Rational& p);
 
     int LowCommonMultiple(const int& a, const int& b);
-
+    int GreatCommonDivisor(const int&a, const int& b);
+    double Rational2Double(const Rational& r);
 } // Rational_lib
 
 #endif //RATIONALEXERCICE_RATIONAL_H
